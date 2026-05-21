@@ -85,6 +85,69 @@ body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(
     background: var(--dark);
     transform: scale(1.05);
 }
+/* --- NAVBAR ACTIONS CONTAINER --- */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* --- FSSAI NAVBAR BADGE --- */
+.fssai-nav-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Aligns text perfectly to the right */
+    justify-content: center;
+    gap: 2px;
+}
+
+.fssai-nav-logo {
+    height: 22px; /* Small, sharp, and elegant for top header menu */
+    width: auto;
+    filter: brightness(0) invert(1); /* Keeps it pure white over the transparent hero section */
+    transition: filter 0.3s ease;
+}
+
+/* When the user scrolls down, turn the logo to its official green/orange colors */
+.navbar.scrolled .fssai-nav-logo {
+    filter: none; 
+}
+
+.fssai-nav-no {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+}
+
+.navbar.scrolled .fssai-nav-no {
+    color: #555; /* Darker text for readability when navbar background turns white */
+}
+
+/* --- MOBILE BREAKPOINT ADJUSTMENTS --- */
+@media (max-width: 900px) {
+    /* Ensure action items wrap smoothly on tablets/phones */
+    .nav-actions {
+        gap: 12px;
+    }
+    
+    /* Hide the long license number on small phones to prevent layout breaking, keep just the logo */
+    .fssai-nav-no {
+        display: none;
+    }
+    
+    .fssai-nav-logo {
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* On tiny mobile screens, stack or limit header items if necessary */
+    .fssai-nav-badge {
+        margin-right: 5px;
+    }
+}
 
 /* --- SECTIONS --- */
 .hero {
