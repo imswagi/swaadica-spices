@@ -121,3 +121,43 @@ window.addEventListener('scroll', function() {
         nav.classList.remove('scrolled');
     }
 });
+// 3. Mobile Hamburger Menu Toggle Engine
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const toggleIcon = mobileToggle.querySelector('i');
+    const navLinks = document.querySelectorAll('.nav-link-item, .contact-btn');
+
+    // Toggle active state when clicking the hamburger icon
+    mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navMenu.classList.toggle('active');
+        
+        // Dynamic Icon morphing between Bars and Close cross
+        if (navMenu.classList.contains('active')) {
+            toggleIcon.className = 'fas fa-xmark';
+            mobileToggle.style.transform = 'rotate(90deg)';
+        } else {
+            toggleIcon.className = 'fas fa-bars';
+            mobileToggle.style.transform = 'rotate(0deg)';
+        }
+    });
+
+    // Close mobile menu automatically when any navigational option is clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            toggleIcon.className = 'fas fa-bars';
+            mobileToggle.style.transform = 'rotate(0deg)';
+        });
+    });
+
+    // Close menu if a user clicks anywhere outside the active drawer
+    document.addEventListener('click', (e) => {
+        if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+            navMenu.classList.remove('active');
+            toggleIcon.className = 'fas fa-bars';
+            mobileToggle.style.transform = 'rotate(0deg)';
+        }
+    });
+});

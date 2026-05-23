@@ -75,10 +75,11 @@ body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    display: flex;
+    display: inline-flex; /* Changed from flex to inline-flex */
     align-items: center;
     gap: 8px;
     transition: 0.3s;
+    white-space: nowrap; /* Prevents text splitting */
 }
 
 .contact-btn:hover {
@@ -248,180 +249,100 @@ body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(
 }
 
 /* --- MOBILE RESPONSIVENESS --- */
-/* --- MOBILE RESPONSIVENESS --- */
-@media (max-width: 768px) {
-    .nav-link-item { display: none; }
-    .navbar { padding: 10px 0; }
-    .feature-grid { flex-direction: column; gap: 30px; }
-    
-    /* Responsive overrides for your top-right layout alignment */
-    .nav-actions {
-        gap: 10px;            /* Tightens spacing on standard tablet screen wrappers */
+/* --- RESPONSIVE HAMBURGER NAVIGATION SYSTEM --- */
+
+/* Base Toggle Button (Hidden on Desktop) */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    z-index: 2100;
+}
+
+.navbar.scrolled .menu-toggle {
+    color: var(--dark); /* Dark bars when navbar goes white */
+}
+
+@media (max-width: 900px) {
+    /* Reveal Burger Button */
+    .menu-toggle {
+        display: block;
     }
-    
+
+    /* Convert Navigation Links Container into a Sliding Glass Drawer */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Hidden off-screen right by default */
+        width: 75%;
+        max-width: 320px;
+        height: 100vh;
+        background: rgba(26, 26, 26, 0.98); /* Luxury deep dark drawer */
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 100px 40px 40px;
+        gap: 35px;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Ultra-smooth swipe */
+    }
+
+    /* Trigger Class to show Drawer (Controlled via JavaScript) */
+    .nav-links.active {
+        right: 0;
+    }
+
+    /* Transform text options inside mobile menu drawer */
+    .nav-link-item {
+        color: white !important;
+        font-size: 18px;
+        width: 100%;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Stacks buttons inside mobile menu drawer */
+    .nav-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .contact-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 14px;
+    }
+
+    /* Recalibrate FSSAI visibility rules inside drawer layout */
+    .fssai-nav-badge {
+        align-items: flex-start;
+        margin-left: 5px;
+    }
+
     .fssai-nav-logo {
-        height: 22px;         /* Gently scales down the local image asset */
+        height: 24px;
     }
 
     .fssai-nav-no {
-        display: none;        /* Hides the text string on smaller devices to prevent crowded overlap */
+        display: block !important; /* Forces number visibility inside mobile menu drawer */
+        color: rgba(255, 255, 255, 0.6) !important;
     }
 }
 
-@media (max-width: 480px) {
-    .nav-actions {
-        gap: 8px;             /* Compact micro gap for narrow mobile screens */
-    }
-    
-    .fssai-nav-logo {
-        height: 18px;         /* Clean, minimized asset footprint on small mobile views */
-    }
-}
+/* Base sections and grid mobile overrides */
 @media (max-width: 768px) {
-    .nav-link-item { display: none; }
     .navbar { padding: 10px 0; }
     .feature-grid { flex-direction: column; gap: 30px; }
-}
-
-/* --- PREMIUM GLASS CONTACT SECTION --- */
-.contact-section {
-    padding: 60px 8% 80px;
-    background: #fafafa; /* Blends with the body background */
-}
-
-.contact-card-glass {
-    max-width: 1100px;
-    margin: 0 auto;
-    background: var(--dark); /* Dark theme to match the footer */
-    color: white;
-    padding: 60px 5%;
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* Subtle gold glow accent in the card background */
-.contact-card-glass::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 300px;
-    height: 300px;
-    background: rgba(212, 175, 55, 0.1);
-    filter: blur(80px);
-    border-radius: 50%;
-    pointer-events: none;
-}
-
-.contact-card-glass .section-title {
-    color: white;
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 10px;
-}
-
-.contact-card-glass .tagline {
-    color: var(--primary); /* Swaadica Gold */
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 600;
-    margin-bottom: 50px;
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
-}
-
-.contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    text-align: left;
-    padding: 15px;
-}
-
-.contact-icon {
-    width: 50px;
-    height: 50px;
-    background: rgba(212, 175, 55, 0.15); /* Translucent Gold Circle */
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    color: var(--primary);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-}
-
-.contact-details h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
-    color: white;
-}
-
-.contact-details p {
-    color: rgba(255, 255, 255, 0.7); /* Soft white readability text */
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-.contact-link {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.contact-link:hover {
-    color: var(--primary); /* Glows gold on hover */
-}
-/* --- FSSAI COMPLIANCE BADGE --- */
-.fssai-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin: 30px auto 10px;
-    padding: 15px 25px;
-    background: rgba(255, 255, 255, 0.03); /* Soft glass box matching the theme */
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    max-width: 250px;
-}
-
-.fssai-logo {
-    height: 35px; /* Perfect scale height for compliance badges */
-    width: auto;
-    filter: brightness(0) invert(1) opacity(0.8); /* Turns the logo a clean, premium white to match footer */
-    transition: filter 0.3s ease;
-}
-
-.fssai-container:hover .fssai-logo {
-    filter: brightness(1) invert(0) opacity(1); /* Reveals true official colors on hover */
-}
-
-.fssai-text {
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.6);
-    text-transform: uppercase;
-}
-
-.fssai-text span {
-    color: var(--primary); /* Highlights the license number in Swaadica Gold */
-    font-weight: 600;
-}
-
-/* Smooth entry for mobile layout */
-@media (max-width: 768px) {
+    
     .contact-section {
         padding: 40px 4% 60px;
     }
