@@ -5,44 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Swaadica Spices | 100% Organic Authentic Flavors</title>
     
-    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Link to your CSS file -->
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-    <!-- PREMIUM GLASS NAVBAR -->
     <nav class="navbar" id="main-nav">
         <div class="nav-container">
             <div class="logo-container">
                 <a href="#">
-                    <!-- Updated with the transparent PNG logo -->
                     <img src="./img/swaadica logo.png" alt="Swaadica Logo" class="brand-logo">
                 </a>
             </div>
             
+            <button class="menu-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            
             <div class="nav-links" id="nav-menu">
                 <a href="#about" class="nav-link-item">Our Story</a>
                 <a href="#products" class="nav-link-item">Our Spices</a>
-                <a href="#contact" class="nav-btn contact-btn">Contact</a>
+                <a href="#contact" class="nav-link-item">Contact</a>
+                
                 <div class="nav-actions">
-                    <a href="https://wa.me/6387643090" class="nav-btn contact-btn">
+                    <a href="https://wa.me/916387643090" class="nav-btn contact-btn">
                         <i class="fab fa-whatsapp"></i> <span>Order Now</span>
                     </a>
                     <div class="fssai-nav-badge">
-        <img src="./img/fssai-logo img.png" alt="FSSAI Certified" class="fssai-nav-logo">
-        <span class="fssai-nav-no"> 22726625000112</span>
-    </div>
-</div>
+                        <img src="./img/fssai-logo img.png" alt="FSSAI Certified" class="fssai-nav-logo">
+                        <span class="fssai-nav-no">22726625000112</span>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Nature's Finest <br><span>Spices</span></h1>
@@ -51,7 +50,6 @@
         </div>
     </section>
 
-    <!-- ABOUT US SECTION -->
     <section id="about" class="about-section">
         <div class="about-container">
             <h2 class="section-title">The Swaadica Promise</h2>
@@ -76,35 +74,11 @@
         </div>
     </section>
 
-    <!-- PRODUCT CATALOG SECTION -->
     <main id="products" class="container">
         <h2 class="section-title">Our Premium Collection</h2>
         <div class="product-grid" id="product-list">
-            <!-- JavaScript in js/script.js will inject your 6 spices here -->
-        </div>
+            </div>
     </main>
-
-    <!-- BRAND FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <img src="./img/swaadica logo.png" alt="Swaadica" class="footer-logo">
-            
-            <div class="social-links">
-                <a href="https://www.instagram.com/swaadica_spices?igsh=dGhvcDRzbjNpOXZs" target="_blank" class="instagram-link">
-                    <i class="fab fa-instagram"></i> Follow us on Instagram
-                </a>
-            </div>
-
-            <div class="fssai-container">
-                <img src="./img/fssai-logo img.png" alt="FSSAI Certified Logo" class="fssai-logo">
-                <p class="fssai-text"> <span>22726625000112</span></p>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 Swaadica Spices. Crafted in India. Savored Worldwide.</p>
-            </div>
-        </div>
-    </footer>
 
     <section id="contact" class="contact-section">
         <div class="contact-card-glass">
@@ -141,7 +115,27 @@
         </div>
     </section>
 
-    <!-- Link to your JS file -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <img src="./img/swaadica logo.png" alt="Swaadica" class="footer-logo">
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/swaadica_spices?igsh=dGhvcDRzbjNpOXZs" target="_blank" class="instagram-link">
+                    <i class="fab fa-instagram"></i> Follow us on Instagram
+                </a>
+            </div>
+
+            <div class="fssai-container">
+                <img src="./img/fssai-logo img.png" alt="FSSAI Certified Logo" class="fssai-logo">
+                <p class="fssai-text"><span>22726625000112</span></p>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Swaadica Spices. Crafted in India. Savored Worldwide.</p>
+            </div>
+        </div>
+    </footer>
+
     <script type="module" src="./script.js"></script>
 </body>
 </html>
